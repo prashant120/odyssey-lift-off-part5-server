@@ -37,6 +37,8 @@ const resolvers = {
     },
   },
   Track: {
+    durationInSeconds: ({ length }) => length,
+
     author: ({ authorId }, _, { dataSources }) => {
       return dataSources.trackAPI.getAuthor(authorId);
     },
@@ -45,6 +47,9 @@ const resolvers = {
       return dataSources.trackAPI.getTrackModules(id);
     },
   },
+  Module: {
+    durationInSeconds: ({ length }) => length,
+  }
 };
 
 module.exports = resolvers;
